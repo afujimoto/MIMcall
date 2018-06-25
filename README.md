@@ -24,5 +24,8 @@ git clone @@@@@@@
 
 [MIT](https://github.com/tcnksm/tool/blob/master/LICENCE)
 
-## Author
-Akihiro Fujimoto
+##Contact
+
+Akihiro Fujimoto - fujimoto@ddm.med.kyoto-u.ac.jp
+
+https://sites.google.com/site/fujimotoakihironopeji/home/english
