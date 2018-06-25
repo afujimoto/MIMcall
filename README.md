@@ -9,7 +9,9 @@ Overview
 
 ## Requirement
 samtools
+
 perl 
+
 python3
 
 ## Usage
@@ -23,4 +25,4 @@ git clone @@@@@@@
 [MIT](https://github.com/tcnksm/tool/blob/master/LICENCE)
 
 ## Author
-Akihior Fujimoto
+Akihiro Fujimoto
