@@ -17,11 +17,16 @@ GetOptions(
 	"BL=f" => \$blood_L_cutoff,
 	"CL=f" => \$cancer_L_cutoff,
 	"ER=s" => \$error_rate_file,
+	"VAF=f" => \$min_VAF,
+	"N=f" => \$min_num,
+
 );
 
 if($blood_depth_cutoff == undef){$blood_depth_cutoff = 10;}
 if($blood_L_cutoff == undef){$blood_L_cutoff = -3;}
 if($cancer_L_cutoff == undef){$cancer_L_cutoff = -3;}
+if($min_VAF == undef){$min_VAF = 0.05;}
+if($min_num == undef){$min_num = 2;}
 
 my %error_rate_matrix = {};
 open ER, "$error_rate_file" or  die "$error_rate_file !!";
@@ -73,7 +78,7 @@ foreach my $range (keys %error_rate_matrix){
 open IN, "$infile" or die "$infile !!";
 while(<IN>){
 	chomp;
-	print"$_\t";
+#	print"$_\t";
 	my @l = split("\t");
 	my $pos = join("_", ($l[0], $l[1], $l[2]));
 
@@ -92,7 +97,7 @@ while(<IN>){
 
 	my %blood_genotype2 = &get_blood_genotype2($l[$blood_length_num_col], $blood_L_cutoff, $blood_depth_cutoff, $unit, \%error_rate);
 
-	if($blood_genotype2{"blood_genotype"} eq "LOW"){print"LOW\n"; next;}
+	if($blood_genotype2{"blood_genotype"} eq "LOW"){print"$_\tLOW\n"; next;}
 
 	my $num_blood_allele = 0;
 	my @tmp = split(",", $l[$blood_length_num_col]);
@@ -110,7 +115,7 @@ while(<IN>){
 		$blood_total_depth += $tmp[1];
 	}
 
-	if($cancer_total_depth < $cancer_depth_cutoff){print"LOW\n"; next;}
+	if($cancer_total_depth < $cancer_depth_cutoff){print"$_\tLOW\n"; next;}
 
 	my @blood_genotype = split("/", $blood_genotype2{"blood_genotype"});
 	@blood_genotype = sort { $a <=> $b } @blood_genotype;
@@ -152,7 +157,7 @@ while(<IN>){
 					else{$blood_L = $blood_genotype2{$_}}
 
 					if($blood_L > $blood_L_cutoff){
-						print"Significant,$_;$cancer_allele{$_}->{read_num},$blood_read_num{$_},$L,$blood_L\t";
+						print"$_\tSignificant,$_;$cancer_allele{$_}->{read_num},$blood_read_num{$_},$L,$blood_L\n";
 					}
 				}
 			}
@@ -187,14 +192,14 @@ while(<IN>){
 					else{$blood_L = $blood_genotype2{$_}}
 	
 					if($blood_L > $blood_L_cutoff){
-						print"Significant,$_;$cancer_allele{$_}->{read_num},$blood_read_num{$_},$L,$blood_L\t";
+						print"$_\tSignificant,$_;$cancer_allele{$_}->{read_num},$blood_read_num{$_},$L,$blood_L\n";
 					}
 				}
 			}
 		}
 	}
 
-	print"\n";
+#	print"\n";
 }
 
 sub make_error_rate{

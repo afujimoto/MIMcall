@@ -1,4 +1,4 @@
-use strict;
+duse strict;
 use Getopt::Long;
 
 use constant LF => "\n";
@@ -12,26 +12,24 @@ my @script_name_l = split("/", $script_name);
 pop(@script_name_l);
 my $SRC = join("/", @script_name_l);
 
-my ($CANCER_BAM, $BLOOD_BAM, $OUTPUT_FILE, $RMSK, $bwa_ref, $config_file, $help) = ("", "", "","", "", "", "");
+my ($CANCER_BAM, $BLOOD_BAM, $OUTPUT_FILE, $RMSK, $config_file, $help) = ("", "", "","", "", "", "");
 
 GetOptions(
         "C_BAM=s" => \$CANCER_BAM,
         "N_BAM=s" => \$BLOOD_BAM,
-	"OUTPUT_F=s" => \$OUTPUT_FILE,
+		"OUTPUT_F=s" => \$OUTPUT_FILE,
         "MS=s" => \$RMSK,
-        "REF=s" => \$bwa_ref,
         "CONF=s" => \$config_file,
         "h" => \$help
 );
 
 my $message = << '&EOT&';
-Usage: perl <path>/RUN_MIM_CALLER.pl [-C_BAM <input file (cancer bam)>] [-B_BAM <input file (noarmal bam)>] [-OUT <output directory>] [-MS <MS location file>] [-REF <Reference file (fasta)>] [-CONF <Config file (Optional)>] [-h]
+Usage: perl <path>/RUN_MIM_CALL.pl [-C_BAM <input file (cancer bam)>] [-B_BAM <input file (noarmal bam)>] [-OUT <output directory>] [-MS <MS location file>] [-CONF <Config file (Optional)>] [-h]
 -C_BAM		Input cancer bam file (Required)
 -N_BAM  	Input normal bam file (Required)
 -MS		MS location file (Required)
 -OUTPUT_F	Output file (Required)
 -CONF		Config file (Optional)
--REF    	Reference genome (Index file for samtools is required.) (Required)
 -h      	Print this message
 &EOT&
 
@@ -48,7 +46,6 @@ if( ! -f $CANCER_BAM){print"$CANCER_BAM Cancer bam file !!\n"; exit(0)}
 if( ! -f $BLOOD_BAM){print"$BLOOD_BAM Normal bam file !!\n"; exit(0)}
 if( ! $OUTPUT_FILE){print"$OUTPUT_FILE Outout file !!\n"; exit(0)}
 if( ! -f $RMSK){print"$RMSK MS location file !!\n"; exit(0)}
-if( ! -f $bwa_ref){print"$bwa_ref Reference file !!\n"; exit(0)}
 if( ! -f $config_file){print"$config_file Config file !!\n"; exit(0)}
 
 #####################GET PRMS###############################
@@ -85,7 +82,8 @@ my %normal_option = ("REF" => $bwa_ref, "MQ" => $normal_prms{mq_cutoff}, "LL" =>
 
 my $BC_merge_file = "$SRC"."/merged.txt";
 
-my %call_option = ("BD" => $call_prms{BLOOD_MIN_DEPTH}, "CD" => $call_prms{CANCER_MIN_DEPTH}, "BL" => $call_prms{BLOOD_L}, "CL" => $call_prms{CANCER_L}, "ER" => "$SRC/$call_prms{ERROR_RATE_TABLE}");
+#my %call_option = ("BD" => $call_prms{BLOOD_MIN_DEPTH}, "CD" => $call_prms{CANCER_MIN_DEPTH}, "BL" => $call_prms{BLOOD_L}, "CL" => $call_prms{CANCER_L}, "ER" => "$SRC/$call_prms{ERROR_RATE_TABLE}");
+my %call_option = ("D" => $call_prms{MIN_DEPTH}, "L" => $call_prms{L}, "ER" => "$SRC/$call_prms{ERROR_RATE_TABLE}", "N" => "$call_prms{NUM}", "VAF" => "$call_prms{VAF}");
 
 my @option = ();
 for my $name (keys %cancer_option){
