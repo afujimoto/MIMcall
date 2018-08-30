@@ -19,7 +19,7 @@ my ($CANCER_BAM, $BLOOD_BAM, $OUTPUT_FILE, $RMSK, $config_file, $help, $bwa_ref)
 GetOptions(
         "C_BAM=s" => \$CANCER_BAM,
         "N_BAM=s" => \$BLOOD_BAM,
-		"OUTPUT_F=s" => \$OUTPUT_FILE,
+        "OUTPUT_F=s" => \$OUTPUT_FILE,
         "MS=s" => \$RMSK,
         "CONF=s" => \$config_file,
         "h" => \$help
