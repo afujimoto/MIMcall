@@ -52,37 +52,37 @@ perl RUN_MIM_CALL.pl  -C_BAM ./test/test.bam -B_BAM  ./test/test.2,bam -OUT ./te
 ## Parameter setting in configuration file
 We consider that the patemeter set of the provided configuration file is an apprppreate ones for 30x coverage WGS data. If you want to use different parameters, please change parm.conf file.
 
-\##CANCER PRMS##  
-mq_cutoff; Minimum mapping quality for reqd selection (20)  
-len_cutoff1; Minimum distance between paired reads (100)  
-len_cutoff2; Maxmum distance between paired reads (550)   
-flanking_len_cutoff; Minimum flanking length (10)  
-S_length_cutoff; Minimum softclip length (3)  
-q_score_cutoff; Minimum average qility score of flanking region (10)  
-indel_S_num_cutoff; Maximum number of indel and softclip. (2)
+\##CANCER PRMS##   
+mq_cutoff; Minimum mapping quality for reqd selection (20)   
+len_cutoff1; Minimum distance between paired reads (100)   
+len_cutoff2; Maxmum distance between paired reads (550)    
+flanking_len_cutoff; Minimum flanking length (10)   
+S_length_cutoff; Minimum softclip length (3)   
+q_score_cutoff; Minimum average qility score of flanking region (10)   
+indel_S_num_cutoff; Maximum number of indel and softclip. (2)  
 SW_alignment; Perform Smith-Waterman alignmnt (1; Yes, 0; No) (0)    
-REF; Path to reference.fasta file (samtools index file is also required.)  
+REF; Path to reference.fasta file (samtools index file is also required.)   
 d; Gap open penalty (1)  
 e; Gap extention penalty (1)  
 
-\##NORMAL PRMS##
-mq_cutoff; Minimum mapping quality for reqd selection (20)  
-len_cutoff1; Minimum distance between paired reads (100)
-len_cutoff2; Maxmum distance between paired reads (550) 
-flanking_len_cutoff; Minimum flanking length (3)  
-S_length_cutof; Minimum softclip length (3)
-q_score_cutoff; Minimum average qility score of flanking region (10) 
-SW_alignment; Perform Smith-Waterman alignmnt (1; Yes, 0; No) (0)
-REF = "path to reference.fasta file (samtools index file is also required.)"
-d; Gap open penalty (1)
-e; Gap extention penalty (1)
+\##NORMAL PRMS##   
+mq_cutoff; Minimum mapping quality for reqd selection (20)   
+len_cutoff1; Minimum distance between paired reads (100)  
+len_cutoff2; Maxmum distance between paired reads (550)   
+flanking_len_cutoff; Minimum flanking length (3)    
+S_length_cutof; Minimum softclip length (3)  
+q_score_cutoff; Minimum average qility score of flanking region (10)   
+SW_alignment; Perform Smith-Waterman alignmnt (1; Yes, 0; No) (0)  
+REF = "path to reference.fasta file (samtools index file is also required.)"  
+d; Gap open penalty (1)  
+e; Gap extention penalty (1)  
 
-\##MS CALL PRMS##		
+\##MS CALL PRMS##    
 BLOOD_MIN_DEPTH; Minimum depth for normal sample (15)  
 CANCER_MIN_DEPTH; Minimum depth for cancer sample (15)  
-BLOOD_L; Likelihood value for normal sample (-1)
-CANCER_L; Likelihood value for cancer sample (-8)
-ERROR_RATE_TABLE; Path of error arte matrix (VIMcall/Error_rate_matrix.txt)
+BLOOD_L; Likelihood value for normal sample (-1)  
+CANCER_L; Likelihood value for cancer sample (-8)  
+ERROR_RATE_TABLE; Path of error arte matrix (VIMcall/Error_rate_matrix.txt)  
 VAF; Mimimum varinat allele frequency (0.05)    
 NUM; Mimimum number of read (2)  
 
