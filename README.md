@@ -31,7 +31,7 @@ python
 
 ## Output file format
 ```
-\<chr\> \<start\> \<end\> \<repeat unit of microsatellte\> \<Sequence of microsatellte> \<number of reads with length of microsatellte in cancer (length;number of reads)\> \<number of reads with length of microsatellte in normal tissue (length;number of reads)\> \<Calling result\>  
+<chr> <start> <end> <repeat unit of microsatellte> <Sequence of microsatellte> <number of reads with length of microsatellte in cancer (length;number of reads)> <number of reads with length of microsatellte in normal tissue (length;number of reads)> <Calling result>  
 1       159891271       159891275       (A)n    AAAAA   4;24,5;14,      4;17,5;12,      
 1       42869711        42869720        (T)n    TTTTTTTTT       8;15,9;18,      8;1,9;14,10;1,          Mutant_allele=8;Number_in_cancer=15;Number_in_normal=1;L_of_cancer=-17.48;L_of_normal=-0.83;VAF=0.45    
 ```
