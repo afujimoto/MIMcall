@@ -12,6 +12,8 @@ my @script_name_l = split("/", $script_name);
 pop(@script_name_l);
 my $SRC = join("/", @script_name_l);
 
+if(length($SRC) == 0){$SRC = "."}
+
 my ($CANCER_BAM, $BLOOD_BAM, $OUTPUT_FILE, $RMSK, $config_file, $help, $bwa_ref) = ("", "", "","", "", "", "", "");
 
 GetOptions(
