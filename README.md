@@ -30,15 +30,15 @@ python
 
 
 ## Output file format
-\<chr\> \<start\> \<end\> \<repeat unit of microsatellte\> \<Sequence of microsatellte> \<number of reads with length of microsatellte (length;number of reads)\> \<genotype\> \<calling information (2nd major allele, number of reads, varinat allele frequency)\>  
-22      17282432        17282438        (A)n    AAAAAAA 7;44    7/7     -  
-22      17282577        17282589        (A)n    AAAAAAAAAAAAA   13;24,14;3      13/14   minor_alelle=14;L=-3.03;Number=3;VAF=0.11 
+\<chr\> \<start\> \<end\> \<repeat unit of microsatellte\> \<Sequence of microsatellte> \<number of reads with length of microsatellte in cancer (length;number of reads)\> \<number of reads with length of microsatellte in normal tissue (length;number of reads)\> \<Calling result\>  
+1       159891271       159891275       (A)n    AAAAA   4;24,5;14,      4;17,5;12,      
+1       42869711        42869720        (T)n    TTTTTTTTT       8;15,9;18,      8;1,9;14,10;1,          Mutant_allele=8;Number_in_cancer=15;Number_in_normal=1;L_of_cancer=-17.48;L_of_normal=-0.83;VAF=0.45    
 
 
 ## Usage
 ```
 cd <path to MIVcall>
-perl RUN_MIM_CALL.pl -C_BAM <cancer bam> -B_BAM <normal bam> -OUT <output directory> -MS <MS location file> -CONF <Config file (Optional)>
+perl RUN_MIM_CALL.pl -C_BAM <cancer bam> -B_BAM <normal tissue bam> -OUT <output directory> -MS <MS location file> -CONF <Config file (Optional)>
 ```
 
 ## Parameter setting in configuration file
