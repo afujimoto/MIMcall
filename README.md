@@ -41,14 +41,6 @@ cd <path to MIVcall>
 perl RUN_MIM_CALL.pl -C_BAM <cancer bam> -B_BAM <normal bam> -OUT <output directory> -MS <MS location file> -CONF <Config file (Optional)>
 ```
 
-## Example
-```
-git clone https://github.com/afujimoto/MIMcall.git
-cd MIMcall
-perl RUN_MIM_CALL.pl  -C_BAM ./test/test.bam -B_BAM  ./test/test.2,bam -OUT ./test/test.out -MS./test/test_MS_list.txt
-```
-
-
 ## Parameter setting in configuration file
 We consider that the patemeter set of the provided configuration file is an apprppreate ones for 30x coverage WGS data. If you want to use different parameters, please change parm.conf file.
 
