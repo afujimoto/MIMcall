@@ -1,5 +1,5 @@
-Name
-MIMcall
+Name  
+MIMcall  
 A software to indetify indels in microsatelte regions
 
 Overview
