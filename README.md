@@ -54,7 +54,7 @@ We consider the parameter set in the provided configuration apprppreate for 30x 
 \##CANCER PRMS##   
 mq_cutoff; Minimum mapping quality for read selection (20)   
 len_cutoff1; Minimum distance between paired reads (100)   
-len_cutoff2; Maxmum distance between paired reads (550)    
+len_cutoff2; Maximum distance between paired reads (550)    
 flanking_len_cutoff; Minimum flanking length (10)   
 S_length_cutoff; Minimum softclip length (3)   
 q_score_cutoff; Minimum average quality score of flanking region (10)   
@@ -63,7 +63,7 @@ indel_S_num_cutoff; Maximum number of indel and softclip. (2)
 \##NORMAL PRMS##   
 mq_cutoff; Minimum mapping quality for read selection (20)   
 len_cutoff1; Minimum distance between paired reads (100)  
-len_cutoff2; Maxmum distance between paired reads (550)   
+len_cutoff2; Maximum distance between paired reads (550)   
 flanking_len_cutoff; Minimum flanking length (3)    
 S_length_cutof; Minimum softclip length (3)  
 q_score_cutoff; Minimum average quality score of flanking region (10)   
