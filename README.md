@@ -76,6 +76,9 @@ CANCER_L; Likelihood value for cancer sample (-8)
 ERROR_RATE_TABLE; Path of error arte matrix (MIMcall/Error_rate_matrix.txt)  
 VAF; Mimimum varinat allele frequency (0.05)    
 NUM; Mimimum number of read (2)  
+BN; Maximum number of mutant reads in normal sample (1)  
+CN; Minimum number of mutant reads in cancer (2)    
+VAF; Variant allele frequency in cancer (0.15)    
 
 ## Preformance
 Performance of this tool is provided in Supplymanraty information of Fujimoto et al. (bioaxiv).
