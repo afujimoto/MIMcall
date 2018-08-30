@@ -46,7 +46,7 @@ my $message = << '&EOT&';
 Usage: perl <path>/GET_READ.BLOOD.pl [-I <input file (bam)>] [-MS <microsatellte location file>] [-REF <Reference file (fasta)>] [-h]
 -I      Input bam file (Required)
 -MS     MS location file (Required)
--REF    Reference genome (Index file for samtools is required.) (Required)
+-REF    Reference genome (Index file for samtools is required.) (Optional)
 -h      Print this message
 -MQ     Minimam mapping quality (20)
 -LL     Minimum distance between reads (100)

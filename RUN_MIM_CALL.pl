@@ -78,9 +78,9 @@ while(<CONF>){
 ############################################################
 
 ####################MAKE CMD################################
-my %cancer_option = ("REF" => $bwa_ref, "MQ" => $cancer_prms{mq_cutoff}, "LL" => $cancer_prms{len_cutoff1}, "ML" => $cancer_prms{len_cutoff2}, "FL" => $cancer_prms{flanking_len_cutoff}, "SL" => $cancer_prms{S_length_cutoff}, "BQ" => $cancer_prms{q_score_cutoff}, "SW" => $cancer_prms{SW_alignment}, "GO" => $cancer_prms{d}, "GE" => $cancer_prms{e}, "MS" => $RMSK, "I" => $CANCER_BAM, "ISN" => $cancer_prms{indel_S_num_cutoff});
+my %cancer_option = ("REF" => $cancer_prms{REF}, "MQ" => $cancer_prms{mq_cutoff}, "LL" => $cancer_prms{len_cutoff1}, "ML" => $cancer_prms{len_cutoff2}, "FL" => $cancer_prms{flanking_len_cutoff}, "SL" => $cancer_prms{S_length_cutoff}, "BQ" => $cancer_prms{q_score_cutoff}, "SW" => $cancer_prms{SW_alignment}, "GO" => $cancer_prms{d}, "GE" => $cancer_prms{e}, "MS" => $RMSK, "I" => $CANCER_BAM, "ISN" => $cancer_prms{indel_S_num_cutoff});
 
-my %normal_option = ("REF" => $bwa_ref, "MQ" => $normal_prms{mq_cutoff}, "LL" => $normal_prms{len_cutoff1}, "ML" => $normal_prms{len_cutoff2}, "FL" => $normal_prms{flanking_len_cutoff}, "SL" => $normal_prms{S_length_cutoff}, "BQ" => $normal_prms{q_score_cutoff}, "SW" => $normal_prms{SW_alignment}, "GO" => $normal_prms{d}, "GE" => $normal_prms{e}, "MS" => $RMSK, "I" => $BLOOD_BAM);
+my %normal_option = ("REF" => $normal_prms{REF}, "MQ" => $normal_prms{mq_cutoff}, "LL" => $normal_prms{len_cutoff1}, "ML" => $normal_prms{len_cutoff2}, "FL" => $normal_prms{flanking_len_cutoff}, "SL" => $normal_prms{S_length_cutoff}, "BQ" => $normal_prms{q_score_cutoff}, "SW" => $normal_prms{SW_alignment}, "GO" => $normal_prms{d}, "GE" => $normal_prms{e}, "MS" => $RMSK, "I" => $BLOOD_BAM);
 
 my $BC_merge_file = "$SRC"."/merged.txt";
 
