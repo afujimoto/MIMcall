@@ -1,4 +1,4 @@
-duse strict;
+use strict;
 use Getopt::Long;
 
 use constant LF => "\n";
@@ -12,7 +12,7 @@ my @script_name_l = split("/", $script_name);
 pop(@script_name_l);
 my $SRC = join("/", @script_name_l);
 
-my ($CANCER_BAM, $BLOOD_BAM, $OUTPUT_FILE, $RMSK, $config_file, $help) = ("", "", "","", "", "", "");
+my ($CANCER_BAM, $BLOOD_BAM, $OUTPUT_FILE, $RMSK, $config_file, $help, $bwa_ref) = ("", "", "","", "", "", "", "");
 
 GetOptions(
         "C_BAM=s" => \$CANCER_BAM,
