@@ -1,12 +1,11 @@
-Name  
-MIMcall  
-A software to indetify indels in microsatelte regions
+# *MIMcall*
+
+A software to indetify somatic indels in microsatelte regions
 
 Overview
-1. Extract reads covering microsatellte regions from a bam file
+1. Extract reads covering microsatellte regions from a cancer and a normal bam files
 2. Analyze repeat length 
 3. Calculate likelihood using an error rate matrix, and indetificaiton of indels in microsatellte regions in cancer and matched nomal sample
-4. Select cancer specifc miscoretellte
 
 ## Requirement
 samtools (0.1.18 or higher)
