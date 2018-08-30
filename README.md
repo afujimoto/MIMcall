@@ -36,12 +36,12 @@ python
 1       42869711        42869720        (T)n    TTTTTTTTT       8;15,9;18,      8;1,9;14,10;1,          Mutant_allele=8;Number_in_cancer=15;Number_in_normal=1;L_of_cancer=-17.48;L_of_normal=-0.83;VAF=0.45    
 ```
 
-Mutant_allele; Mutant allele
-Number_in_cancer; Number of reads of mutant allele in cancer
-Number_in_normal; Number of reads of mutant allele in normal tissue
-L_of_cancer; Likelihood of mutant allele in cancer
-L_of_normal; Likelihood of mutant allele in normal tissue
-VAF; Variant allele frequency in cancer
+Mutant_allele; Mutant allele  
+Number_in_cancer; Number of reads of mutant allele in cancer  
+Number_in_normal; Number of reads of mutant allele in normal tissue  
+L_of_cancer; Likelihood of mutant allele in cancer  
+L_of_normal; Likelihood of mutant allele in normal tissue  
+VAF; Variant allele frequency in cancer  
 
 ## Usage
 ```
