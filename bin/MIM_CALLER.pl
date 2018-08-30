@@ -8,7 +8,7 @@ my $blood_length_num_col = 6;
 my $cancer_length_num_col = 5;
 my $unit_col = 3;
 
-my ($infile, $cancer_depth_cutoff, $blood_depth_cutoff, $blood_L_cutoff, $cancer_L_cutoff, $error_rate_file);
+my ($infile, $cancer_depth_cutoff, $blood_depth_cutoff, $blood_L_cutoff, $cancer_L_cutoff, $error_rate_file, $min_VAF, $min_num, $blood_max_num);
 
 GetOptions(
 	"I=s" => \$infile,
@@ -18,15 +18,17 @@ GetOptions(
 	"CL=f" => \$cancer_L_cutoff,
 	"ER=s" => \$error_rate_file,
 	"VAF=f" => \$min_VAF,
-	"N=f" => \$min_num,
-
+	"CN=f" => \$min_num,
+	"BN=f" => \$blood_max_num,
 );
 
-if($blood_depth_cutoff == undef){$blood_depth_cutoff = 10;}
+if($blood_depth_cutoff == undef){$blood_depth_cutoff = 15;}
+if($cancer_depth_cutoff == undef){$cancer_depth_cutoff = 15;}
 if($blood_L_cutoff == undef){$blood_L_cutoff = -3;}
-if($cancer_L_cutoff == undef){$cancer_L_cutoff = -3;}
-if($min_VAF == undef){$min_VAF = 0.05;}
-if($min_num == undef){$min_num = 2;}
+if($cancer_L_cutoff == undef){$cancer_L_cutoff = -8;}
+if($min_VAF != 0 and $min_VAF == undef){$min_VAF = 0.15;}
+if($min_num != 0 and $min_num == undef){$min_num = 2;}
+if($blood_max_num != 0 and $blood_max_num == undef){$blood_max_num = 1;}
 
 my %error_rate_matrix = {};
 open ER, "$error_rate_file" or  die "$error_rate_file !!";
@@ -78,7 +80,7 @@ foreach my $range (keys %error_rate_matrix){
 open IN, "$infile" or die "$infile !!";
 while(<IN>){
 	chomp;
-#	print"$_\t";
+	print"$_\t";
 	my @l = split("\t");
 	my $pos = join("_", ($l[0], $l[1], $l[2]));
 
@@ -97,7 +99,7 @@ while(<IN>){
 
 	my %blood_genotype2 = &get_blood_genotype2($l[$blood_length_num_col], $blood_L_cutoff, $blood_depth_cutoff, $unit, \%error_rate);
 
-	if($blood_genotype2{"blood_genotype"} eq "LOW"){print"$_\tLOW\n"; next;}
+	if($blood_genotype2{"blood_genotype"} eq "LOW"){print"LOW\n"; next;}
 
 	my $num_blood_allele = 0;
 	my @tmp = split(",", $l[$blood_length_num_col]);
@@ -115,7 +117,7 @@ while(<IN>){
 		$blood_total_depth += $tmp[1];
 	}
 
-	if($cancer_total_depth < $cancer_depth_cutoff){print"$_\tLOW\n"; next;}
+	if($cancer_total_depth < $cancer_depth_cutoff){print"LOW\n"; next;}
 
 	my @blood_genotype = split("/", $blood_genotype2{"blood_genotype"});
 	@blood_genotype = sort { $a <=> $b } @blood_genotype;
@@ -157,7 +159,14 @@ while(<IN>){
 					else{$blood_L = $blood_genotype2{$_}}
 
 					if($blood_L > $blood_L_cutoff){
-						print"$_\tSignificant,$_;$cancer_allele{$_}->{read_num},$blood_read_num{$_},$L,$blood_L\n";
+						my $total_number_of_cancer_read = 0;
+						for my $cancer_allele_tmp (keys %cancer_allele){
+							$total_number_of_cancer_read += $cancer_allele{$cancer_allele_tmp}->{read_num};
+						}
+						my $VAF = &round($cancer_allele{$_}->{read_num}/$total_number_of_cancer_read, 3);
+						if($VAF >= $min_VAF and $cancer_allele{$_}->{read_num} >= $min_num and $blood_read_num{$_} <= $blood_max_num){
+							print"\tMutant_allele=$_;Number_in_cancer=$cancer_allele{$_}->{read_num};Number_in_normal=$blood_read_num{$_};L_of_cancer=$L;L_of_normal=$blood_L;VAF=$VAF\t";
+						}
 					}
 				}
 			}
@@ -177,7 +186,7 @@ while(<IN>){
 					my $L1_2 = $L1 + $L2;
 					if($L < -100){$L = -100}
 					
-					$L += 10**$L1_2;			
+					$L += 10**$L1_2;
 				}
 
 				if($L == 0){$L = 0}
@@ -192,14 +201,23 @@ while(<IN>){
 					else{$blood_L = $blood_genotype2{$_}}
 	
 					if($blood_L > $blood_L_cutoff){
-						print"$_\tSignificant,$_;$cancer_allele{$_}->{read_num},$blood_read_num{$_},$L,$blood_L\n";
+						my $total_number_of_cancer_read = 0;
+						for my $cancer_allele_tmp (keys %cancer_allele){
+							$total_number_of_cancer_read += $cancer_allele{$cancer_allele_tmp}->{read_num};
+						}
+						my $VAF = &round($cancer_allele{$_}->{read_num}/$total_number_of_cancer_read, 3);
+						if($VAF >= $min_VAF and $cancer_allele{$_}->{read_num} >= $min_num and $blood_read_num{$_} <= $blood_max_num){
+							my $blood_read_num2 = $blood_read_num{$_};
+							if($blood_read_num2 == -1000){$blood_read_num2 = 0}
+							print"\tMutant_allele=$_;Number_in_cancer=$cancer_allele{$_}->{read_num};Number_in_normal=$blood_read_num2;L_of_cancer=$L;L_of_normal=$blood_L;VAF=$VAF\t";
+#							print"\tSignificant,$_;$cancer_allele{$_}->{read_num},$blood_read_num{$_},$L,$blood_L\t";
+						}
 					}
 				}
 			}
 		}
 	}
-
-#	print"\n";
+	print"\n";
 }
 
 sub make_error_rate{
