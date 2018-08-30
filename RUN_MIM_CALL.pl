@@ -114,7 +114,7 @@ for my $name (keys %call_option){
 }
 my $call_option_str = join(" ", @option);
 
-my $GET_READS_FROM_CACNER = "perl $SRC/bin/GET_READ.pl $cancer_option_str > $OUTPUT_FILE.CANCER";
+my $GET_READS_FROM_CANCER = "perl $SRC/bin/GET_READ.pl $cancer_option_str > $OUTPUT_FILE.CANCER";
 my $GET_READS_FROM_NORMAL = "perl $SRC/bin/GET_READ.BLOOD.pl $normal_option_str > $OUTPUT_FILE.NORMAL";
 my $MERGE = "python $SRC/bin/MERGE_MS.py $OUTPUT_FILE.CANCER $OUTPUT_FILE.NORMAL > $OUTPUT_FILE.merged";
 my $CALL = "perl $SRC/bin/MIM_CALLER.pl -I $OUTPUT_FILE.merged $call_option_str > $OUTPUT_FILE";
@@ -122,8 +122,8 @@ my $CALL = "perl $SRC/bin/MIM_CALLER.pl -I $OUTPUT_FILE.merged $call_option_str 
 ############################################################
 
 ####################RUN#####################################
-print"GET_READS_FROM_CACNER\n";
-system("$GET_READS_FROM_CACNER");
+print"GET_READS_FROM_CANCER\n";
+system("$GET_READS_FROM_CANCER");
 
 print"GET_READS_FROM_NORMAL\n";
 system("$GET_READS_FROM_NORMAL");
