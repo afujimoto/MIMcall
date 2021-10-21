@@ -79,7 +79,8 @@ CN; Minimum number of mutant reads in cancer (2)
 VAF; Minimum variant allele frequency in cancer (0.15)    
 
 ## Preformance
-Performance of this tool is provided in Fujimoto et al. (bioRxiv).
+Performance of this tool is provided in Fujimoto et al. Genome Research (2020).
+https://genome.cshlp.org/content/early/2020/03/16/gr.255026.119
 
 ## Licence
 GPL
