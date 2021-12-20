@@ -44,8 +44,8 @@ VAF; Variant allele frequency in cancer
 
 ## Usage
 ```
-cd <path to MIVcall>
-perl RUN_MIM_CALL.pl -C_BAM <cancer bam> -N_BAM <normal tissue bam> -OUT <output directory> -MS <MS location file> -CONF <Config file (Optional)>
+cd <path to MIMcall>
+perl RUN_MIM_CALL.pl -C_BAM <cancer bam> -N_BAM <normal tissue bam> -OUT <output file> -MS <MS location file> -CONF <Config file (Optional)>
 ```
 
 ## Parameter setting in configuration file
