@@ -87,7 +87,7 @@ GPL
 
 ## Contact
 
-Akihiro Fujimoto - fujimoto@ddm.med.kyoto-u.ac.jp
+Akihiro Fujimoto - afujimoto@m.u-tokyo.ac.jp
 
 https://sites.google.com/site/fujimotoakihironopeji/home/english
 
