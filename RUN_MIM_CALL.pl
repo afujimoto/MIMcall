@@ -84,8 +84,8 @@ my %normal_option = ("REF" => $normal_prms{REF}, "MQ" => $normal_prms{mq_cutoff}
 
 my $BC_merge_file = "$SRC"."/merged.txt";
 
-#my %call_option = ("BD" => $call_prms{BLOOD_MIN_DEPTH}, "CD" => $call_prms{CANCER_MIN_DEPTH}, "BL" => $call_prms{BLOOD_L}, "CL" => $call_prms{CANCER_L}, "ER" => "$SRC/$call_prms{ERROR_RATE_TABLE}");
-my %call_option = ("D" => $call_prms{MIN_DEPTH}, "L" => $call_prms{L}, "ER" => "$SRC/$call_prms{ERROR_RATE_TABLE}", "N" => "$call_prms{NUM}", "VAF" => "$call_prms{VAF}");
+my %call_option = ("BD" => $call_prms{BLOOD_MIN_DEPTH}, "CD" => $call_prms{CANCER_MIN_DEPTH}, "BL" => $call_prms{BLOOD_L}, "CL" => $call_prms{CANCER_L}, "ER" => "$SRC/$call_prms{ERROR_RATE_TABLE}");
+#my %call_option = ("D" => $call_prms{MIN_DEPTH}, "L" => $call_prms{L}, "ER" => "$SRC/$call_prms{ERROR_RATE_TABLE}", "N" => "$call_prms{NUM}", "VAF" => "$call_prms{VAF}");
 
 my @option = ();
 for my $name (keys %cancer_option){
